@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./Cart.css";
-import { StoreContext } from "../../context/StoreContext";
+import { StoreContext } from "../../StoreContext.jsx";
 
 function Cart() {
     const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
