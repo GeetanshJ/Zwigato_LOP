@@ -12,36 +12,37 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleMenuClick = (menuName) => {
+        setMenu(menuName);
+        setIsMenuOpen(false);
+    };
+
     return (
         <div className='navbar'>
-        <img src={assets.logo} className='logo' alt='Logo' />
-    
-        <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
-            <li onClick={() => { setMenu("home"); setIsMenuOpen(false); }} className={menu === "home" ? "active" : ""}>Home</li>
-            <li onClick={() => { setMenu("menu"); setIsMenuOpen(false); }} className={menu === "menu" ? "active" : ""}>Menu</li>
-            <li onClick={() => { setMenu("mobile-app"); setIsMenuOpen(false); }} className={menu === "mobile-app" ? "active" : ""}>Mobile App</li>
-            <li onClick={() => { setMenu("contact-us"); setIsMenuOpen(false); }} className={menu === "contact-us" ? "active" : ""}>Contact Us</li>
-        </ul>
-    
-        <div className="navbar-right">
-            <img src={assets.search_icon} alt="Search" />
-            <div className="navbar-search-icon">
-                <img src={assets.basket_icon} alt="Basket" />
-                <div className="dot"></div>
+            <img src={assets.logo} className='logo' alt='Logo' />
+            <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+                <li onClick={() => handleMenuClick("home")} className={menu === "home" ? "active" : ""}>Home</li>
+                <li onClick={() => handleMenuClick("menu")} className={menu === "menu" ? "active" : ""}>Menu</li>
+                <li onClick={() => handleMenuClick("mobile-app")} className={menu === "mobile-app" ? "active" : ""}>Mobile App</li>
+                <li onClick={() => handleMenuClick("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</li>
+            </ul>
+            <div className="navbar-right">
+                <img src={assets.search_icon} alt="Search" />
+                <div className="navbar-search-icon">
+                    <img src={assets.basket_icon} alt="Basket" />
+                    <div className="dot"></div>
+                </div>
+                <button>Sign-In</button>
             </div>
-            <button>Sign-In</button>
+            <div className="hamburger" onClick={toggleMenu}>
+                {isMenuOpen ? (
+                    <FontAwesomeIcon icon={faTimes} className="icon" />
+                ) : (
+                    <FontAwesomeIcon icon={faBars} className="icon" />
+                )}
+            </div>
         </div>
-    
-        <div className="hamburger" onClick={toggleMenu}>
-            {isMenuOpen ? (
-                <FontAwesomeIcon icon={faTimes} className="icon" />
-            ) : (
-                <FontAwesomeIcon icon={faBars} className="icon" />
-            )}
-        </div>
-    </div>
-    
     );
 };
 
-export default Navbar
+export default Navbar;
