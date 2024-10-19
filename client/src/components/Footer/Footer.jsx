@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-content-left">
                     <img className = "logo-footer" src={assets.logo} alt="" />
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque minima deleniti alias, tempore consequuntur cum, placeat libero nobis perferendis rerum fugiat vero perspiciatis temporibus, assumenda voluptatum fuga error esse quibusdam.</p>
+                    <p>Zwigato is a food delivery platform designed to connect restaurants with customers, allowing users to browse menus, place orders, and have meals delivered to their doorstep. It offers a seamless interface for both customers and delivery personnel, ensuring efficient order management and real-time tracking.</p>
                     <div className="footer-social-icons">
                         <img src={assets.facebook_icon} alt="" />
                         <img src={assets.twitter_icon} alt="" />
