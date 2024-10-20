@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { assets } from '../../assets/assets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({setLogin}) => {
     const [menu, setMenu] = useState("home");
@@ -19,7 +20,7 @@ const Navbar = ({setLogin}) => {
 
     return (
         <div className='navbar'>
-            <img src={assets.logo} className='logo' alt='Logo' />
+            <Link to='/'><img src={assets.logo} className='logo' alt='Logo' /></Link>
             <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
                 <li onClick={() => handleMenuClick("home")} className={menu === "home" ? "active" : ""}>Home</li>
                 <li onClick={() => handleMenuClick("menu")} className={menu === "menu" ? "active" : ""}>Menu</li>
@@ -29,7 +30,7 @@ const Navbar = ({setLogin}) => {
             <div className="navbar-right">
                 <img src={assets.search_icon} alt="Search" />
                 <div className="navbar-search-icon">
-                    <img src={assets.basket_icon} alt="Basket" />
+                    <Link to='/cart'><img src={assets.basket_icon} alt="Basket" /></Link> 
                     <div className="dot"></div>
                 </div>
                 <button onClick={() => setLogin(true)}>Sign-In</button>
