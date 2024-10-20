@@ -3,6 +3,7 @@
 
 *{
   font-family: Outfit;
+  scroll-behavior: smooth;
 }
 
 body {

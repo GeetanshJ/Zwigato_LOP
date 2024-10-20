@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = () => {
+const Navbar = ({setLogin}) => {
     const [menu, setMenu] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -32,7 +32,7 @@ const Navbar = () => {
                     <img src={assets.basket_icon} alt="Basket" />
                     <div className="dot"></div>
                 </div>
-                <button>Sign-In</button>
+                <button onClick={() => setLogin(true)}>Sign-In</button>
             </div>
             <div className="hamburger" onClick={toggleMenu}>
                 {isMenuOpen ? (
