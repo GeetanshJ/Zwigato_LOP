@@ -5,6 +5,12 @@ const StoreContextProvider = (props) => {
 
     const [cartItems,setCartItems] = useState({});
 
+    const totalPrice = () => {
+        food_list.reduce((acc, item) => {
+            return acc + (cartItems[item._id] ? item.price * cartItems[item._id] : 0);
+        }, 0);
+    }
+
     const addToCart = (itemId) => {
         if(!cartItems[itemId]){
             setCartItems((prev) => ({...prev,[itemId] : 1}));
@@ -16,7 +22,7 @@ const StoreContextProvider = (props) => {
     }
 
     const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({...prev,[itemId] : prev[itemId]-1}))
+        setCartItems((prev) => ({...prev,[itemId] : 0}))
     }
 
     const contextValue = {
@@ -24,7 +30,8 @@ const StoreContextProvider = (props) => {
         cartItems,
         setCartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        totalPrice
     }
 
 
