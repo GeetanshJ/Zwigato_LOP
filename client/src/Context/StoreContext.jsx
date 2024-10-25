@@ -1,14 +1,15 @@
 import { createContext,  useState } from "react";
 import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
-const StoreContextProvider = (props) => {
-
+const StoreContextProvider = ({children}) => {
     const [cartItems,setCartItems] = useState({});
 
-    const totalPrice = () => {
-        food_list.reduce((acc, item) => {
+    const getTotalCartAmount = () => {
+        let totalPrice = food_list.reduce((acc, item) => {
             return acc + (cartItems[item._id] ? item.price * cartItems[item._id] : 0);
         }, 0);
+
+        return totalPrice;
     }
 
     const addToCart = (itemId) => {
@@ -31,13 +32,13 @@ const StoreContextProvider = (props) => {
         setCartItems,
         addToCart,
         removeFromCart,
-        totalPrice
+        getTotalCartAmount
     }
 
 
     return(
         <StoreContext.Provider value = {contextValue}>
-            {props.children}
+            {children}
         </StoreContext.Provider>
     )
 }
