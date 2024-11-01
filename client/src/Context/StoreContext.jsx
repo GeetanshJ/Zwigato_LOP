@@ -3,6 +3,8 @@ import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
 const StoreContextProvider = ({children}) => {
     const [cartItems,setCartItems] = useState({});
+    const url = "http://localhost:4000"
+    const[token,setToken] = useState("");
 
     const getTotalCartAmount = () => {
         let totalPrice = food_list.reduce((acc, item) => {
@@ -32,7 +34,10 @@ const StoreContextProvider = ({children}) => {
         setCartItems,
         addToCart,
         removeFromCart,
-        getTotalCartAmount
+        getTotalCartAmount,
+        url,
+        token,
+        setToken
     }
 
 
