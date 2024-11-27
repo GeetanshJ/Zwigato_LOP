@@ -3,7 +3,7 @@ import axios from 'axios'
 export const StoreContext = createContext(null);
 const StoreContextProvider = ({children}) => {
     const [cartItems,setCartItems] = useState({});
-    const url = "https://zwigato-server-m6w6.onrender.com/"
+    const url = "https://zwigato-server-m6w6.onrender.com"
     const[token,setToken] = useState("");
     const[food_list,setFoodList] = useState([]);
 
