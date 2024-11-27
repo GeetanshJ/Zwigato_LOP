@@ -1,7 +1,10 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 import userModel from "../models/userModel.js";
-import jwt from "jsonwebtoken"
-import bcrypt from "bcrypt";
-import validator from "validator"
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const validator = require("validator");
+
 
 
 const loginUser = async (req,res) => {

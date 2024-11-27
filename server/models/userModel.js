@@ -1,5 +1,6 @@
-import mongoose from "mongoose";
-
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true,unique:true},

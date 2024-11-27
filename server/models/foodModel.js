@@ -1,4 +1,6 @@
-import mongoose, { mongo } from "mongoose";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const mongoose = require("mongoose");
 
 const foodSchema = new mongoose.Schema({
     name: {type:String,required:true},

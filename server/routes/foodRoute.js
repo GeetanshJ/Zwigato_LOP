@@ -1,8 +1,9 @@
-import express from "express";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const express = require("express");
 import { addFood, listFood,removeFood } from "../controllers/foodController.js";
 
-import multer from 'multer';
-
+const multer = require('multer');
 const foodRouter = express.Router();
 
 const storage = multer.diskStorage({
