@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import "./Navbar.css";
-import { assets } from "../../assets/assets";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { assets } from "../../assets/assets";
 import { StoreContext } from "../../Context/StoreContext";
+import "./Navbar.css";
 
 const Navbar = ({ setLogin }) => {
     const [menu, setMenu] = useState("home");
@@ -12,7 +12,7 @@ const Navbar = ({ setLogin }) => {
     const [showDropdown, setShowDropdown] = useState(false);
     const { token, setToken } = useContext(StoreContext);
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const toggleMenu = () => setIsMenuOpen(prevState => !prevState);
     const toggleDropdown = () => setShowDropdown(!showDropdown);
 
     const handleMenuClick = (menuName) => {
@@ -22,6 +22,7 @@ const Navbar = ({ setLogin }) => {
 
     const handleLogout = () => {
         setToken(null);
+        localStorage.removeItem("token");
         setLogin(false);
     };
 
@@ -81,15 +82,16 @@ const Navbar = ({ setLogin }) => {
                                 </button>
                             </div>
                         )}
-
                     </div>
                 ) : (
-                    <button  className='sign-in-btn' onClick={() => setLogin(true)}>Sign-In</button>
+                    <button className="sign-in-btn" onClick={() => setLogin(true)}>
+                        Sign-In
+                    </button>
                 )}
             </div>
             <div className="hamburger" onClick={toggleMenu}>
                 {isMenuOpen ? (
-                    <FontAwesomeIcon icon={faTimes} className="icon" />
+                    <FontAwesomeIcon icon={faTimes} className="icon cross-icon" />
                 ) : (
                     <FontAwesomeIcon icon={faBars} className="icon" />
                 )}
