@@ -1,12 +1,13 @@
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../Context/StoreContext";
 import "./Navbar.css";
 
 const Navbar = ({ setLogin }) => {
+    const nav = useNavigate();
     const [menu, setMenu] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
@@ -25,6 +26,10 @@ const Navbar = ({ setLogin }) => {
         localStorage.removeItem("token");
         setLogin(false);
     };
+
+    const handleNav = () => {
+        nav('/myorders');
+    }
 
     return (
         <div className="navbar">
@@ -72,7 +77,7 @@ const Navbar = ({ setLogin }) => {
                         />
                         {showDropdown && (
                             <div className="profile-dropdown">
-                                <button className="dropdown-btn">
+                                <button className="dropdown-btn" onClick={handleNav}>
                                     <img src={assets.bag_icon} alt="Orders" />
                                     Orders
                                 </button>

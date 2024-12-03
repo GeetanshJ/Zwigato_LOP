@@ -127,6 +127,15 @@
     transition: background-color 0.3s;
 }
 
+.red-dot{
+    font-size: 55px;
+    color: red;
+}
+
+.no-red-dot{
+    display: none;
+}
+
 .sign-in-btn:hover {
     background-color: tomato;
     color: #ddd;

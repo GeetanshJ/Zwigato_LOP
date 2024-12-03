@@ -7,6 +7,7 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Footer from './components/Footer/Footer';
 import { useState } from 'react';
 import Login from './components/Login/Login';
+import MyOrders from './pages/MyOrders/MyOrders';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path = "/" element={<Home/>}/>
         <Route path = "/cart" element={<Cart/>}/>
+        <Route path = "/myorders" element={<MyOrders/>}/>
         <Route path = "/order" element={<PlaceOrder/>}/>
       </Routes>
     </div>
