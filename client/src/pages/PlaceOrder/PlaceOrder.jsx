@@ -51,7 +51,7 @@ const PlaceOrder = () => {
         }
 
         else{
-            alert(err);
+            alert("err");
         }
         
     }
