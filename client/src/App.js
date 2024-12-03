@@ -1,13 +1,13 @@
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import Home from './pages/Home/Home';
-import Cart from './pages/Cart/Cart';
-import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Footer from './components/Footer/Footer';
-import { useState } from 'react';
 import Login from './components/Login/Login';
+import Navbar from './components/Navbar/Navbar';
+import Cart from './pages/Cart/Cart';
+import Home from './pages/Home/Home';
 import MyOrders from './pages/MyOrders/MyOrders';
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 
 function App() {
 
