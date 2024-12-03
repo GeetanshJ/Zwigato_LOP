@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../Context/StoreContext';
 import './PlaceOrder.css';
 import axios from 'axios';
@@ -22,6 +22,10 @@ const PlaceOrder = () => {
         const value = e.target.value;
         setData(data=>({...data,[name]:value}))
     }
+
+    useEffect(() => {
+        console.log(data);
+    },[data])
 
     const placeOrder = async(e)=>{
         e.preventDefault();
@@ -47,7 +51,7 @@ const PlaceOrder = () => {
         }
 
         else{
-            alert("error");
+            alert(err);
         }
         
     }
