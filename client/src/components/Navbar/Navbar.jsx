@@ -1,13 +1,11 @@
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../Context/StoreContext";
 import "./Navbar.css";
 
-const Navbar = ({ setLogin }) => {
-    const nav = useNavigate();
+const Navbar = ({ setLogin, scrollToSection }) => {
     const [menu, setMenu] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
@@ -19,6 +17,7 @@ const Navbar = ({ setLogin }) => {
     const handleMenuClick = (menuName) => {
         setMenu(menuName);
         setIsMenuOpen(false);
+        scrollToSection(menuName);
     };
 
     const handleLogout = () => {
@@ -27,71 +26,33 @@ const Navbar = ({ setLogin }) => {
         setLogin(false);
     };
 
-    const handleNav = () => {
-        nav('/myorders');
-    }
+    const handleNav = () => {};
 
     return (
         <div className="navbar">
-            <Link to="/">
-                <img src={assets.logo} className="logo" alt="Logo" />
-            </Link>
+            <img src={assets.logo} className="logo" alt="Logo" />
             <ul className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
-                <li
-                    onClick={() => handleMenuClick("home")}
-                    className={menu === "home" ? "active" : ""}
-                >
-                    Home
-                </li>
-                <li
-                    onClick={() => handleMenuClick("menu")}
-                    className={menu === "menu" ? "active" : ""}
-                >
-                    Menu
-                </li>
-                <li
-                    onClick={() => handleMenuClick("mobile-app")}
-                    className={menu === "mobile-app" ? "active" : ""}
-                >
-                    Mobile App
-                </li>
-                <li
-                    onClick={() => handleMenuClick("contact-us")}
-                    className={menu === "contact-us" ? "active" : ""}
-                >
-                    Contact Us
-                </li>
+                <li onClick={() => handleMenuClick("home")} className={menu === "home" ? "active" : ""}>Home</li>
+                <li onClick={() => handleMenuClick("menu")} className={menu === "menu" ? "active" : ""}>Menu</li>
+                <li onClick={() => handleMenuClick("mobile-app")} className={menu === "mobile-app" ? "active" : ""}>Mobile App</li>
+                <li onClick={() => handleMenuClick("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</li>
             </ul>
             <div className="navbar-right">
                 <div className="navbar-search-icon">
-                    <Link to="/cart">
-                        <img src={assets.basket_icon} alt="Basket" />
-                    </Link>
+                    <img src={assets.basket_icon} alt="Basket" />
                 </div>
                 {token ? (
                     <div className="navbar-profile">
-                        <img
-                            src={assets.profile_icon}
-                            alt="Profile"
-                            onClick={toggleDropdown}
-                        />
+                        <img src={assets.profile_icon} alt="Profile" onClick={toggleDropdown} />
                         {showDropdown && (
                             <div className="profile-dropdown">
-                                <button className="dropdown-btn" onClick={handleNav}>
-                                    <img src={assets.bag_icon} alt="Orders" />
-                                    Orders
-                                </button>
-                                <button className="dropdown-btn" onClick={handleLogout}>
-                                    <img src={assets.logout_icon} alt="Logout" />
-                                    Logout
-                                </button>
+                                <button className="dropdown-btn" onClick={handleNav}>Orders</button>
+                                <button className="dropdown-btn" onClick={handleLogout}>Logout</button>
                             </div>
                         )}
                     </div>
                 ) : (
-                    <button className="sign-in-btn" onClick={() => setLogin(true)}>
-                        Sign-In
-                    </button>
+                    <button className="sign-in-btn" onClick={() => setLogin(true)}>Sign-In</button>
                 )}
             </div>
             <div className="hamburger" onClick={toggleMenu}>
